@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<!--<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Checkout Page</title>
+  <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  &lt;!&ndash; Bootstrap icons&ndash;&gt;
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  &lt;!&ndash; Core theme CSS (includes Bootstrap)&ndash;&gt;
+  <link href="css/mystyles.css" rel="stylesheet" />
+</head>-->
+<div th:replace="~{fragments/frag.html:: head}"></div>
+<body>
+<!-- Navigation-->
+<div th:replace="~{fragments/frag.html :: nav}"></div>
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5">
+    <img src="./images/website/Plantworld.png" width="100" height="100" class="d-inline-block align-top rounded-circle" alt="Logo">
+    <a class="navbar-brand " href="#!"><b>PlantWorld</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about_us">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/indoor_doors">Indoor Plants</a></li>
+            <li><a class="dropdown-item" href="/outdoor_plants">Outdoor Plants</a></li>
+            <li><a class="dropdown-item" href="/herbs">Herbs</a></li>
+            <li><a class="dropdown-item" href="/pots_tools">Pots and Tools</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form action="checkout.html" th:href="@{/checkout}" href="/checkout">
+        <button class="btn btn-outline-dark" type="submit">
+          <i class="bi-cartBasket-fill me-1"></i>
+          Cart
+          <span class="badge bg-dark text-white ms-1 rounded-pill" th:text="${cartCount}"></span>
+        </button>
+      </form>
+    </div>
+    <h5 class="m-2 justify-content-end" > </h5>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <b>Hi <span class="text-center text-black" th:text="${session.userName}"></span></b> </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#!">Logout</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#!">View Orders</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#!">Manage Account</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>-->
+<!-- Header-->
+<header class="bg-image py-5" style="background-image: url('./images/website/finalbanner.png');">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-dark">
+      <h1><p class="text-center text-black">Checkout Page</p></h1>
+    </div>
+  </div>
+  </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+ <form th:action="@{/order}" action="/order" class="needs-validation" novalidate  method="post">
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Billing address</h4>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" pattern="^[a-zA-Z]+" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+                Can contain only letters.
+              </div>
+              <div class="valid-feedback">
+                Looks Good.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" pattern="^[a-zA-Z]+" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+                Can contain only letters.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+
+              <input type="text" name="email" class="form-control" id="email" placeholder="name@mail.com"  pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$" required>
+              <div class="invalid-feedback">
+                Invalid email.
+                Follow naming convention name@mail.com.
+              </div>
+              <div class="valid-feedback">
+                Looks Good.
+              </div>
+
+            </div>
+
+            <div class="col-12">
+              <label for="shippingAddress" class="form-label">Address</label>
+              <input type="text" class="form-control" id="shippingAddress" name="shippingAddress" th:name="shippingAddress" placeholder="1234 Main St" required>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" id="country" required>
+                <option value="">Choose...</option>
+                <option>United States</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">State</label>
+              <select class="form-select" id="state" required>
+                <option value="">Choose...</option>
+                <option value="Naperville">Naperville</option>
+                <option value="chicago">Chicago</option>
+                <option value="Detroit">Detroit</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">Zip</label>
+              <input type="text" class="form-control" pattern="\d{5}" id="zip" placeholder="" required>
+              <div class="invalid-feedback">
+                Zip code required.
+                Please provide a valid zip only 5 digits allowed
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Payment</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Name on card</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required>
+              <small class="text-muted">Full name as displayed on card</small>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">Credit card number</label>
+              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <div class="invalid-feedback">
+                Credit card number is required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Expiration</label>
+              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-outline-dark mt-auto" type="submit">Continue to checkout</button>
+          </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<!-- Footer-->
+<div th:replace="~{fragments/frag.html :: foot}"></div>
+<!--<footer class="py-3 bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <img src="./images/website/Plantworld.png" width="150" height="150" class="d-inline-block align-top rounded-circle" alt="">
+      </div>
+      <div class="col-3">
+        <h3><p class="m-4 text-center text-white">Naperville Location</p></h3>
+        <p class="m-0 text-center text-white">#1234 Plant Street</p>
+        <p class="m-0 text-center text-white">IL, 60500</p>
+        <p class="m-0 text-center text-white">Phone: (000) 020-0000</p>
+        <p class="m-0 text-center text-white"><a href="#">Get Directions</a></p>
+      </div>
+      <div class="col-3">
+        <h3><p class="m-4 text-center text-white">Michigan Location</p></h3>
+        <p class="m-0 text-center text-white">#1234 Plant Street</p>
+        <p class="m-0 text-center text-white">MI, 20563</p>
+        <p class="m-0 text-center text-white">Phone: (000) 030-0000</p>
+        <p class="m-0 text-center text-white"><a href="#">Get Directions</a></p>
+      </div>
+      <div class="col-3">
+        <h3><p class="m-4 text-center text-white">Chicago Location</p></h3>
+        <p class="m-0 text-center text-white">#1234 Plant Street</p>
+        <p class="m-0 text-center text-white">MI, 20563</p>
+        <p class="m-0 text-center text-white">Phone: (000) 030-0000</p>
+        <p class="m-0 text-center text-white"><a href="#">Get Directions</a></p>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <p class=" m-0 text-white">Copyright &copy; PlantWorld</p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/script.js"></script>
+</body>
+</html>

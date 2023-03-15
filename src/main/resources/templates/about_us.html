@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<div th:replace="~{fragments/frag_without_cart.html:: head}"></div>
+<body>
+<!-- Navigation-->
+<div th:replace="~{fragments/frag_without_cart.html :: navWithoutCart}"></div>
+<!-- Header-->
+<header class="bg-image py-5" style="background-image: url('./images/website/GardenCenter.jpg');">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder text-white">Plant World Garden Center</h1>
+    </div>
+  </div>
+  </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <h1><p class=" text-center text-black">" Good things Grow here "</p></h1>
+      <p class="m-2 text-jutify text-black">Plant World offers a broad range of novel and traditional herbs, Fancy pots, flowers,
+        perennials, and quality gardening supplies. We know from experience that each gardener has individual goals and tastes, and
+        no two gardens are alike.</p>
+
+      <h1><u><p class="m-2 text-left text-black">Our Promise</p></u></h1>
+
+      <p class="text-justify text-black">Our customers have trusted Plant world to deliver the best quality products and service.
+        Gardeners rely on us from reliable plant information and how-to tips that make gardening easier and more successful.
+        We guarantee every product that we sell and are committed to the satisfaction and success of all gardeners.</p>
+
+      <p class="m-2 text-justify text-black">Since our founding in 2022, Plant World has introduced countless new flower, herb varieties
+      </p>
+
+      <p class="m-2 text-justify text-black"> Our longtime slogan says it best: Plant world Seeds Grow. Our seeds germinate up to 95% success rate and are always non-GMO. Our plants have large, well-established roots and ship to all
+        growing zones at the optimal time for the location of your garden.</p>
+
+      <p class="m-2 text-justify text-black">We promise to be your trusted partner through every step of your gardening journey.
+        Let’s grow together.</p>
+
+      <p class="m-2 text-justify text-black">Don't wait, feel free to meet us. Take a stroll down our beautiful Garden Center<p>
+
+      <p class="m-2 text-justify text-black"><h3><a href="/tour">Register for a tour</a></h3></p>
+    </div>
+  </div>
+</section>
+<!-- Footer-->
+<div th:replace="~{fragments/frag_without_cart.html :: foot}"></div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

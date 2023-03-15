@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Contact Us</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/mystyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <img src="./images/website/Plantworld.png" width="100" height="100" class="d-inline-block align-top rounded-circle" alt="Logo">
+                <a class="navbar-brand " href="#!"><b>PlantWorld</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" th:action="@{/indoor_plants}" href="/indoor_plants">Indoor Plants</a></li>
+                                <li><a class="dropdown-item" th:action="@{/outdoor_plants}" href="/outdoor_plants">Outdoor Plants</a></li>
+                                <li><a class="dropdown-item" th:action="@{/herbs}" href="/herbs">Herbs</a></li>
+                                <li><a class="dropdown-item" th:action="@{/pots_tools}" href="/pots_tools">Pots and Tools</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form action="confirm_order"  href="/confirm_order" th:action="@{/confirm_order}" method="get">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cartBasket-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" th:text="${cartCount}"></span>
+                        </button>
+                    </form>
+                </div>
+                <h5 class="m-2 justify-content-end" > </h5>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b class="text-center text-black">Hi <span class="text-center text-black"></span> </b> </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">Logout</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><form th:action="@{/view_order}" method="get"><button class="dropdown-item" value="submit">View Orders</button></form></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" >Manage Account</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><form th:action="@{/view_product}" method="get"><button class="dropdown-item" value="submit">View Product</button></form></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><form th:action="@{/admin/add_product}" method="get"><button class="dropdown-item" value="submit">Add Product</button></form></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><form th:action="@{/view_category}" method="get"><button class="dropdown-item" value="submit">View Category</button></form></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><form th:action="@{/add_category}" method="get"><button class="dropdown-item" value="submit">Add Category</button></form></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-image py-5" style="background-image: url('./images/website/finalbanner.png');">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder text-dark">Welcome to Plant World</h1>
+                </div>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="card text-center" >
+                        <div class="card-header">
+                            <h1><p class="text-center text-black">Please Register</p></h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+
+                                <form action="/saveUser" th:action="@{/saveUser}" method="post" th:object="${userRegistration}" class="needs-validation" id="registerForm" enctype="multipart/form-data" accept="image/png, image/jpeg, image/webp" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationCustom01">Name</label>
+                                            <input type="text" name="userName" pattern="^[a-zA-Z]+" class="form-control" id="validationCustom01" placeholder="Name" required>
+                                            <div class="invalid-feedback">
+                                                Enter a valid First Name.
+                                                Name should be atleast 2 letters and should have no digits.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationCustom03">Email</label>
+                                            <div class="input-group">
+                                                <input type="text" name="email" class="form-control" id="validationCustom03" placeholder="name@mail.com" aria-describedby="inputGroupPrepend" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$" required>
+                                                <div class="invalid-feedback">
+                                                    Follow naming convention name@mail.com.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationCustom04">Password</label>
+                                            <input type="password" name="password"  class="form-control" id="validationCustom04" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$" placeholder="password" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid password.
+                                                Password must have atleast 1 digit, 1 lowercase letter, 1 uppercase letter, 1 special character, no space, and it must be 8-16 characters long.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationCustom01">Address</label>
+                                            <input type="text" name="address" class="form-control" id="validationCustom05" placeholder="address">
+                                            <div class="invalid-feedback">
+                                                Please provide address
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="file">Image</label>
+                                            <input
+                                                    type="file"
+                                                    class="form-control"
+                                                    id="file"
+                                                    name="file"
+
+                                            />
+                                        </div>
+
+
+                                    </div>
+                                    <button class="btn btn-outline-dark mt-auto" type="submit" id="submit-btn">Submit form</button>
+                                    <div class="px-5 py-5 text-start" id="formInfo">
+
+                                    </div>
+                                </form>
+
+                            <!--<form action="/saveUser" method="GET"  class="needs-validation" id="registerForm" novalidate>
+                                <div class="form-row">
+                                  <div class="col-md-4 mb-3">
+                                    <label for="validationCustom01">Name</label>
+                                    <input type="text" name="userName" pattern="^[a-zA-Z]+" class="form-control" id="validationCustom01" placeholder="Name" required>
+                                    <div class="invalid-feedback">
+                                        Enter a valid First Name.
+                                        Name should be atleast 2 letters and should have no digits.
+                                      </div>
+                                    <div class="valid-feedback">
+                                      Looks good!
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">Email</label>
+                                    <div class="input-group">
+                                      <input type="text" name="email" class="form-control" id="validationCustom03" placeholder="name@mail.com" aria-describedby="inputGroupPrepend" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$" required>
+                                      <div class="invalid-feedback">
+                                        Follow naming convention name@mail.com.
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                      <div class="col-md-4 mb-3">
+                                        <label for="validationCustom04">Password</label>
+                                        <input type="password" name="password" class="form-control" id="validationCustom04" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$" placeholder="password" required>
+                                        <div class="valid-feedback">
+                                        Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                          Please provide a valid password.
+                                          Password must have atleast 1 digit, 1 lowercase letter, 1 uppercase letter, 1 special character, no space, and it must be 8-16 characters long.
+                                        </div>
+                                      </div>
+
+
+                                </div>
+                                <button class="btn btn-outline-dark mt-auto" type="submit" id="submit-btn">Submit form</button>
+                                <div class="px-5 py-5 text-start" id="formInfo">
+
+                                </div>
+                              </form>-->
+                              </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-3 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="./images/website/Plantworld.png" width="150" height="150" class="d-inline-block align-top rounded-circle" alt="">
+                    </div>
+                    <div class="col-3">
+                        <h3><p class="m-4 text-center text-white">Naperville Location</p></h3>
+                        <p class="m-0 text-center text-white">#1234 Plant Street</p>
+                        <p class="m-0 text-center text-white">IL, 60500</p>
+                        <p class="m-0 text-center text-white">Phone: (000) 020-0000</p>
+                        <p class="m-0 text-center text-white"><a href="#">Get Directions</a></p>
+                    </div>
+                    <div class="col-3">
+                        <h3><p class="m-4 text-center text-white">Michigan Location</p></h3>
+                        <p class="m-0 text-center text-white">#1234 Plant Street</p>
+                        <p class="m-0 text-center text-white">MI, 20563</p>
+                        <p class="m-0 text-center text-white">Phone: (000) 030-0000</p>
+                        <p class="m-0 text-center text-white"><a href="#">Get Directions</a></p>
+                    </div>
+                    <div class="col-3">
+                        <h3><p class="m-4 text-center text-white">Chicago Location</p></h3>
+                        <p class="m-0 text-center text-white">#1234 Plant Street</p>
+                        <p class="m-0 text-center text-white">MI, 20563</p>
+                        <p class="m-0 text-center text-white">Phone: (000) 030-0000</p>
+                        <p class="m-0 text-center text-white"><a href="#">Get Directions</a></p>
+                    </div>
+                </div>
+                <div>
+                    <div class="row">
+                        <p class=" m-0 text-white">Copyright &copy; PlantWorld</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/script.js"></script>
+    </body>
+</html>
